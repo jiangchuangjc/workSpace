@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../libs/angular.min.js"></script>
+</head>
+<body ng-app="app">
+   <div ng-controller="ctrl">
+       <ul>
+         <li>姓名:{{username}}</li>
+         <li>分数:{{score}}</li>
+         <li>幸运数字:{{arr}}</li>
+         <li>{{obj}}</li>
+         <li>{{arr[0]}}</li>
+         <li>{{obj.name}}</li>
+       </ul>
+       <div>
+         我叫:{{username}},考试分数{{score}}分,偶像是{{obj.name}}.
+       </div>
+   </div>
+</body>
+<script>
+  var app = angular.module("app",[]);
+  
+  app.controller("ctrl",["$scope",function($scope){
+    $scope.username = 'jiangchuang';
+    $scope.score = 100;
+    $scope.arr = [1,2,3];
+    $scope.obj = {name:"liudehua",age:58};
+  }])
+</script>
+</html>
