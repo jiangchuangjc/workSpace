@@ -9,16 +9,10 @@
   <script src='../libs/angular.min.js'></script>
 </head>
 
-<body ng-app='app'>
-  <div ng-controller="ctrl">
-      {{str}}
-  </div>
-</body>
+<body ng-app='app'></body>
 <script>
   var app = angular.module('app', []);
-  app.controller("ctrl",["$scope",function($scope){
-    $scope.str = "abcd";
-  
-  }]);
-</script> 
+  console.log(angular.equals(1,"1"));
+</script>
+
 </html>
