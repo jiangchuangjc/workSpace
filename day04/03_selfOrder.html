@@ -2,14 +2,14 @@
 <html lang='en'>
 
 <head>
-  <meta harset='UTF-8'>
+  <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Document</title>
   <script src='../libs/angular.min.js'></script>
 </head>
 <body ng-app='app'>
-  <!-- <div self-url></div> -->
+  <div self-url></div>
   <div>
     作为标签使用:
     <self-order></self-order>
@@ -32,6 +32,14 @@
 </body>
 <script>
   var app = angular.module('app', []);
+  //创建指令
+  /*
+    通过app模块调用directive方法,该方法有2个参数:
+      1. 字符串,表示该指令的名称,命名遵循驼峰命名法
+          第一个单词小写,后续单词首字母大写
+          调用时,将所有大写字母改为小写,同时前面加-
+      2. 是function,表示该指令的功能作用
+  */
   app.directive("selfOrder",function(){
     return {
       restrict : "ECMA",
