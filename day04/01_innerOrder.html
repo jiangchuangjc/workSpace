@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta harset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <style>
+    #box{
+      border: 1px solid red;
+      width: 200px;
+      height: 200px;
+    }
+    .box1{
+      background:aqua;
+    }
+    #box2{
+      border: 1px solid red;
+      width: 200px;
+      height: 200px;
+    }
+    .black{
+      background:black;
+    }
+    .blue{
+      background:blue;
+    }
+  </style>
+  <script src='../libs/angular.min.js'></script>
+</head>
+
+<body ng-app='app'>
+  <ul ng-controller="ctrl">
+    <!-- ng-show取值true或1显示元素 -->
+    <li ng-show="isShow">这是ng-show</li>
+    <!-- 效果和ng-show一样,但是取值相反 -->
+    <li ng-hide="false">这是ng-hide</li>
+    <li ng-if="false">这是ng-if</li>
+    <li>{{msg}}</li>
+    <li ng-bind="msg"></li>
+    <li>
+      <label><input type="radio" name="gender" value="M" ng-checked="sex=='M'">男</label>
+      <label><input type="radio" name="gender" value="F" ng-checked="sex=='F'">女</label>
+    </li>
+    <li>
+      <img ng-src="{{path}}" alt="">
+    </li>
+    <!-- track by $index",当数组有重复元素时,ng-repeat会出错
+         添加该语句可以避免这个错误 -->
+    <li ng-repeat="stu in stus track by $index">
+       {{$index}}.{{stu}}
+    </li>
+    <hr color=red>
+    <li ng-repeat="(key,stu) in stus track by key">
+        {{key}}.{{stu}}
+     </li>
+     <li>
+       <div id="box" ng-class="{box1:color=='aqua'}"></div>
+       <div id="box2" ng-class="{black:color==1,blue:color==2}"></div>
+     </li>
+     <li>
+       <select ng-model="val">
+         <option value="1" selected>html</option>
+         <option value="2">css</option>
+         <option value="3">js</option>
+       </select>
+     </li>
+     <li>
+       <ul ng-switch="val">
+          <li ng-switch-when="1">html的内容</li>
+          <li ng-switch-when="2">css的内容</li>
+          <li ng-switch-when="3">js的内容</li>
+       </ul>
+     </li>
+     
+  </ul>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+     $scope.isShow = true;
+     $scope.msg = "模型层绑定的数据";
+     $scope.sex = "F";
+     $scope.path = "../day03/1.jpeg";
+     $scope.stus = ['Jack','Mike','Lily','Lily','Rose'];
+     $scope.color = 2;
+  }]);
+</script>
+</html>
