@@ -9,6 +9,7 @@
   <script src='../libs/angular.min.js'></script>
 </head>
 <body ng-app='app'>
+  <!-- <div self-url></div> -->
   <div>
     作为标签使用:
     <self-order></self-order>
@@ -36,6 +37,11 @@
       restrict : "ECMA",
       replace : true,
       template:"<p>这是自定义指令返回的数据</p>"
+    }
+  });
+  app.directive("selfUrl",function(){
+    return {
+      templateUrl:"head.html"
     }
   });
 </script>
