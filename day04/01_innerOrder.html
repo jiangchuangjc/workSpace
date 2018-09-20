@@ -45,7 +45,7 @@
       <label><input type="radio" name="gender" value="F" ng-checked="sex=='F'">女</label>
     </li>
     <li>
-      <img ng-src="{{path}}" alt="">
+      <img ng-src="{{path}}">
     </li>
     <!-- track by $index",当数组有重复元素时,ng-repeat会出错
          添加该语句可以避免这个错误 -->
@@ -83,7 +83,7 @@
   app.controller("ctrl",["$scope",function($scope){
      $scope.isShow = true;
      $scope.msg = "模型层绑定的数据";
-     $scope.sex = "F";
+     $scope.sex = "M";
      $scope.path = "../day03/1.jpeg";
      $scope.stus = ['Jack','Mike','Lily','Lily','Rose'];
      $scope.color = 2;
