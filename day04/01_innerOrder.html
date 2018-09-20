@@ -2,7 +2,7 @@
 <html lang='en'>
 
 <head>
-  <meta harset='UTF-8'>
+  <meta charset='UTF-8'>
   <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <meta http-equiv='X-UA-Compatible' content='ie=edge'>
   <title>Document</title>
@@ -31,6 +31,7 @@
 </head>
 
 <body ng-app='app'>
+  <div ng-include="'head.html'"></div>
   <ul ng-controller="ctrl">
     <!-- ng-show取值true或1显示元素 -->
     <li ng-show="isShow">这是ng-show</li>
