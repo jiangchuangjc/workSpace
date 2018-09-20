@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <style>
+    .bgc{
+      background-color: aqua;
+    }
+  </style>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <ul ng-controller="ctrl">
+    <li>
+      <input type="checkbox" name="hobby" value="1">唱歌
+      <input type="checkbox" name="hobby" value="2" ng-checked="true">跳舞
+      <input type="checkbox" name="hobby" value="3">学习
+   </li>
+   <li>
+     <img ng-src="{{path}}" alt="">
+   </li>
+   <li>
+     <select ng-model="val">
+        <option value="1">html</option>
+        <option value="2">css</option>
+        <option value="3">js</option>
+     </select>
+   </li>
+   <li>
+     <ul ng-switch="val">
+       <li ng-switch-when="1">
+         <ul>
+           <li>html初级</li>
+           <li>html中级</li>
+           <li>html高级</li>
+         </ul>
+       </li>
+       <li ng-switch-when="2">
+          <ul>
+            <li>css初级</li>
+            <li>css中级</li>
+            <li>css高级</li>
+          </ul>
+        </li>
+        <li ng-switch-when="3">
+            <ul>
+              <li>js初级</li>
+              <li>js中级</li>
+              <li>js高级</li>
+            </ul>
+          </li>
+     </ul>
+   </li>
+   <li ng-bind="num"></li>
+   <li ng-bind="str"></li>
+   <li>{{obj}}</li>
+   <li ng-bind="arr"></li>
+   <li ng-repeat="arr1 in arr track by $index" ng-hide="$index==2">    
+     <!-- <ul ng-switch="$index">
+        <li ng-switch-when="0" ng-hide="false">{{$index}}.{{arr1}}</li>
+        <li ng-switch-when="1" style="background:red;width: 150px">{{$index}}.{{arr1}}</li>
+        <li ng-switch-when="2" ng-hide="true">{{$index}}.{{arr1}}</li>
+        <li ng-switch-when="3" ng-hide="false">{{$index}}.{{arr1}}</li>        
+     </ul> -->
+     <div ng-class="{bgc:$index==color}">{{arr1}}</div>
+   </li>
+</ul>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+     $scope.path="../day03/1.jpeg"
+     $scope.num=123;
+     $scope.str="abc";
+     $scope.obj={a:1,b:2};
+     $scope.arr=[77,88,9,77];
+     $scope.color=1;
+  }]);
+</script>
+</html>
