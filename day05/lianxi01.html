@@ -31,7 +31,7 @@
        {{stus | orderBy:["-age","+id"]}}
      </li>
      <li>
-       
+       {{stus | filter:{name:"a"} }}
      </li>
   </ul>
 </body>
@@ -41,11 +41,11 @@
      $scope.str = "abcdefg";
      $scope.date = new Date();
      $scope.stus = [
-       {id:101,name:"jordan",age:23},
-       {id:103,name:"kobe",age:20},
-       {id:102,name:"james",age:20},
-       {id:105,name:"messi",age:23},
-       {id:104,name:"wade",age:30}
+       {id:101,name:"jordan",age:23,grade:"a"},
+       {id:103,name:"kobe",age:20,grade:"b"},
+       {id:102,name:"james",age:20,grade:"c"},
+       {id:105,name:"messi",age:23,grade:"a"},
+       {id:104,name:"wade",age:30,grade:"b"}
      ]
   }]);
 </script>
