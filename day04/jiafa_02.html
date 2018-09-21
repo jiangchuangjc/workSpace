@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+    <div ng-controller="ctrl">
+        <input type="text" ng-model="msg1" ng-change="chg()">+<input type="text" ng-model="msg2" ng-change="chg()"> = {{rs}}
+     </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+    //绑定chg事件
+    $scope.chg = function(){
+      //console.log("输入了数据");
+      //获取文本框输入的值
+      var a = $scope.msg1;
+      var b = $scope.msg2;
+      if(a==undefined || a==""){a = 0;}
+      if(b==undefined || b==""){b = 0;}
+      var pat1 = /^[0-9]{0,}$/;
+      var pattern1 = new RegExp(pat1);
+      if(pattern1.test(a || b) == false){
+        alert("输入错误,请重新输入!");
+        $scope.rs = "";
+        return;
+      }
+      $scope.rs = parseFloat(a)+parseFloat(b);
+    }
+  }]);
+      
+</script>
+</html>
