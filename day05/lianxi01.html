@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <ul ng-controller="ctrl">
+     <li>
+        <input type="text" ng-model="input"> <br>
+        {{input | uppercase}}  <br>
+        {{input | lowercase}}
+     </li>
+     <li>
+       {{str | limitTo:-5 | uppercase}}
+     </li>
+     <li>
+       <input type="text" ng-model="msg"> <br>
+       {{msg | number:1}}
+     </li>
+     <li>
+      当前时间:{{date | date:'yyyy年MM月dd日 HH时mm分ss秒'}}
+     </li>
+     <li>
+       id升序{{stus | orderBy:"+id"}}  <br>
+       id降序{{stus | orderBy:"-id"}}  <br>
+       {{stus | orderBy:["-age","+id"]}}
+     </li>
+     <li>
+       
+     </li>
+  </ul>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",["$scope",function($scope){
+     $scope.str = "abcdefg";
+     $scope.date = new Date();
+     $scope.stus = [
+       {id:101,name:"jordan",age:23},
+       {id:103,name:"kobe",age:20},
+       {id:102,name:"james",age:20},
+       {id:105,name:"messi",age:23},
+       {id:104,name:"wade",age:30}
+     ]
+  }]);
+</script>
+</html>

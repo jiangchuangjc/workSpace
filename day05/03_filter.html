@@ -18,13 +18,71 @@
      <li>
         当前时间:{{date | date:'yyyy/MM/dd HH:mm:ss'}}
      </li>
+     <li>
+       currency:{{money | currency}} <br>
+       {{money | currency:"￥"}}
+     </li>
+     <li>
+       {{obj}} <br>
+       json:{{obj | json}} <br>
+       {{stu}}
+     </li>
+     <li>
+       {{names}} <br>
+       filter:{{names | filter:'ac'}}
+     </li>
+     <li>
+       limitTo:{{message | limitTo:4}} <br>
+               {{message | limitTo:-4}} <br>
+               {{names | limitTo:2}} <br>
+               {{names | limitTo:-9}}
+     </li>
+     <li>
+       number:{{num | number}} <br>
+       number:{{num | number:2}}
+     </li>
+     <li>
+       orderBy <br>
+       {{nums | orderBy:"":"true"}} <br>
+       {{names | orderBy:"":"true"}} <br>
+       {{stus | orderBy:["id","age"]}}
+     </li>
+     <li>
+        {{nums | orderBy:"-"}} <br>
+        {{names | orderBy:"+"}} <br>
+        {{stus | orderBy:["+id","-age"]}} <br>
+        {{stus | orderBy:"-age"}}
+     </li>
+     <li ng-repeat="n in names | orderBy">
+         {{n}}
+     </li>
   </ul>
 </body>
 <script>
+  function Stu(name,age){
+    this.name = name;
+    this.age = age;
+  }
+  var student = new Stu("李四",20);
   var app = angular.module('app', []);
   app.controller("ctrl",["$scope",function($scope){
      $scope.message = "good good study,DAY DAY UP";
      $scope.date = new Date();
+     $scope.money = 25;
+     $scope.obj = new Object();
+     $scope.obj.name = "张三";
+     $scope.obj.age = 23;
+     $scope.stu = student;
+     $scope.names = ['zhangsan','lisi','jack','allen','rose'];
+     $scope.num = 1234.5678;
+     $scope.nums = [4,5,7,3,6,1,8];
+     $scope.stus = [
+       {id:101,name:"jordan",age:23},
+       {id:103,name:"kobe",age:20},
+       {id:103,name:"james",age:18},
+       {id:102,name:"messi",age:28},
+       {id:101,name:"wade",age:30}
+     ]
   }]);
 </script>
 </html>
