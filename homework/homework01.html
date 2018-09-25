@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+     <input type="text" ng-model='msg'>
+     <div>{{ msg | selfFilter}}</div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.filter("selfFilter",function(){
+     return function(str){
+       //处理传递进来的字符串
+       if(str != null){
+          var pattern1 = new RegExp(/^[0-9a-zA-Z]{0,}$/);
+          if(pattern1.test(str) == false){
+            alert("只能输入字母或数字");
+          }else{
+            var arr = str.split("");
+            for(var i=0;i<str.length;i++){        
+	        if(i==str.length-1){arr[i] = arr[i];
+	        }else{
+	       	 arr[i] = arr[i] + "-";
+	       }
+        }
+        return arr.join("");
+       }
+     }
+   }
+})
+</script>
+</html>
