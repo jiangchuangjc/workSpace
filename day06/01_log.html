@@ -8,18 +8,16 @@
   <script src='../libs/angular.min.js'></script>
 </head>
 <body ng-app='app'>
-     <input type="text" ng-model='msg'>
-     <div>{{ msg | selfFilter}}</div>
+  <div ng-controller="ctrl"></div>
 </body>
 <script>
   var app = angular.module('app', []);
-  app.filter("selfFilter",function(){
-     return function(str){
-       if(str){
-        var arr = str.split("");
-        return arr.join("-");
-      }
-   }
-})
+  app.controller("ctrl",function($log){
+    $log.log("打印日志信息");
+    $log.info("打印普通信息");
+    $log.warn("打印警告信息");
+    $log.error("打印错误信息");
+    $log.debug("打印调错信息");
+  });
 </script>
 </html>
