@@ -12,6 +12,7 @@
 <body ng-app='app'>
   <div ng-controller="ctrl">
       <button ng-click = "send()">发送请求</button>
+      <button ng-click = "send2()">有参get请求</button>
   </div>
 </body>
 <script>
@@ -22,10 +23,18 @@
        //发送http请求
        //无参的get请求
        $http({
-         url:"./data.php",  //请求地址
-         method:"post",
+         url:"./data.php"  //请求地址
        }).success(function(result){
          //result是从服务器获取的结果
+         console.log(result);
+       });
+     }
+     //有参get请求
+     $scope.send2 = function(){
+       $http({
+         url:"./data2.php",
+         params:{"name":"张三"}
+       }).success(function(result){
          console.log(result);
        });
      }

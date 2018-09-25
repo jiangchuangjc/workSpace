@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <style>
+      table,tr,td{
+          border: 1px solid red;
+      }
+  </style>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <form action="stu.php" method="post">
+    <div>
+      <input type="text">
+    </div>
+    <div>
+      <input type="submit" value="点击发送" ng-click = "send()">
+    </div>
+    <!-- <div>
+       <table cellpadding='0' cellspacing='0' height="30px">
+         <tr>
+           <td>学号</td><td>姓名</td><td>性别</td>
+         </tr>
+         <tr ng-repeat="student in students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.sex == 'M'?"男":"女"}}</td>
+         </tr>
+       </table>
+    </div> -->
+  </form> 
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",function($scope,$interval,$filter,$http){
+    //第三题
+    $scope.msg = "123"
+    $scope.send = function(){
+       $http({
+         url:"./stu.php",
+         method="post"
+       }).success(function(result){
+        console.log(result);
+        //将返回的数据绑定到students变量上
+        //$scope.students = result;
+       });
+     }
+  });
+</script>
+</html>

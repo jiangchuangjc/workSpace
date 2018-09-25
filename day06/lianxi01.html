@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+  <style>
+      table,tr,td{
+          border: 1px solid red;
+      }
+  </style>
+  <script src='../libs/angular.min.js'></script>
+</head>
+<body ng-app='app'>
+  <div ng-controller="ctrl">
+    <div>0-100随机数:{{show}}</div>
+    <div><button ng-click = "click()">点击开始/暂停</button></div>
+    <div>当前时间:{{now}}</div>
+    <div>
+      <button ng-click = "send()">点击发送</button>
+    </div>
+    <div>
+       <table cellpadding='0' cellspacing='0' height="30px">
+         <tr>
+           <td>学号</td><td>姓名</td><td>性别</td>
+         </tr>
+         <tr ng-repeat="student in students">
+            <td>{{student.id}}</td>
+            <td>{{student.name}}</td>
+            <td>{{student.sex == 'M'?"男":"女"}}</td>
+         </tr>
+       </table>
+    </div> 
+  </div>
+</body>
+<script>
+  var app = angular.module('app', []);
+  app.controller("ctrl",function($scope,$interval,$filter,$http){
+    //第一题
+    $scope.show = Math.round(Math.random()*100);
+       $interval(function(){      
+        $scope.show = Math.round(Math.random()*100);
+    },1000);
+    //第二题
+     var id;
+     var date = $filter("date"); //获取date过滤器的功能
+     $scope.click = function(){
+       //判断id是否有值,如果有,说明之前已经生成了一个计时器id,应该先关闭,否则生成新的计时器
+       if(id == undefined){//id没有值,生成新的计时器
+          id = $interval(function(){
+          $scope.now = date(new Date(),"yyyy/MM/dd HH:mm:ss");
+        },1000);
+       }else{//id有值
+        $interval.cancel(id);
+        id = undefined;
+       }
+     }
+    //第三题
+    $scope.send = function(){
+       $http({
+         url:"./stu.php"
+       }).success(function(result){
+        console.log(result);
+        //将返回的数据绑定到students变量上
+        $scope.students = result;
+       });
+     }
+  });
+</script>
+</html>
