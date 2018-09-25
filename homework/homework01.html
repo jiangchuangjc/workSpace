@@ -16,7 +16,7 @@
   app.filter("selfFilter",function(){
      return function(str){
        //处理传递进来的字符串
-       if(str != null){
+       if(str != undefined){
           var pattern1 = new RegExp(/^[0-9a-zA-Z]{0,}$/);
           if(pattern1.test(str) == false){
             alert("只能输入字母或数字");
