@@ -14,14 +14,13 @@
 </head>
 <body ng-app='app'>
   <div ng-controller="ctrl">
-    <form action="stu.php" method="post">
     <div>
       <input type="text">
     </div>
     <div>
       <input type="submit" value="点击发送" ng-click = "send()">
     </div>
-    <!-- <div>
+    <div>
        <table cellpadding='0' cellspacing='0' height="30px">
          <tr>
            <td>学号</td><td>姓名</td><td>性别</td>
@@ -32,8 +31,7 @@
             <td>{{student.sex == 'M'?"男":"女"}}</td>
          </tr>
        </table>
-    </div> -->
-  </form> 
+    </div> 
   </div>
 </body>
 <script>
@@ -44,11 +42,10 @@
     $scope.send = function(){
        $http({
          url:"./stu.php",
-         method="post"
        }).success(function(result){
         console.log(result);
         //将返回的数据绑定到students变量上
-        //$scope.students = result;
+        $scope.students = result;
        });
      }
   });
