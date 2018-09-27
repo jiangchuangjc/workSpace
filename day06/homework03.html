@@ -38,26 +38,15 @@
 <script>
   var app = angular.module('app', []);
   app.controller("ctrl",function($scope,$http){
-    //第三题
     $scope.chg = function(index){
     $scope.send = function(){
        $http({
-         url:"./stu.php",
-         //params:{msg:index}
+         url:"./stu1.php",
+         params:{msg:index}
        }).success(function(result){
-        //console.log(result);
         //将返回的数据绑定到students变量上
-        //$scope.students = result;
-        //console.log(result);
-			  //筛选数据
-			var stu = [];//空数组,保存符合条件的数据
-			for(var i=0;i<result.length;i++){
-         if(index == result[i].sex){
-            stu.push(result[i]);
-         }
-			}
-      console.log(stu); 
-			$scope.students = stu;
+        $scope.students = result;
+        console.log(result);
        });
      }
      }

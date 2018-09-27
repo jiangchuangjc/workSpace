@@ -37,11 +37,11 @@
 		 var id = $routeParams.id;
 		 //console.log(id);
 		 $http({
-			 url:"./api/list.php",
-			 params:{id:id}
+			 url:"./api/list.php?id="+id
+			//  params:{id:id}
 		 }).success(function(result){
 			$scope.music = result;
-			//console.log(result);
+			console.log(result);
 			//筛选数据
 			// var music = [];//空数组,保存符合条件的数据
 			// for(var i=0;i<result.length;i++){

@@ -43,14 +43,29 @@
 		array('id'=>39, 'pid'=>4, 'text'=>'君をのせて'),
 		array('id'=>40, 'pid'=>1, 'text'=>'恋恋风尘')
 	);
+	//返回所有数据,无用数据太多
 	// echo json_encode($list);
 	//循环遍历$list,选出符合条件的数据返回
-	$id = $_GET["id"];
+	$id = $_GET["id"];  //接收的参数1,2,3,4
 	$arr = array();//空数组,保存符合条件的数据
-			for($i=0;$i<count($list);$i++){
-         if($id == $list[$i]["pid"]){
-					array_push($arr,$list[$i]);
-				}
+	    //方法1:
+			// for($i=0;$i<count($list);$i++){
+      //    if($id == $list[$i]["pid"]){
+			// 		
+			// 		$arr[] = $list[$i];
+			// 	}
+			// }
+			// 方法2:
+			// foreach($list as $key=>$value){
+			// 	if($id == $value["pid"]){
+			// 		$arr[] = $value;
+			// 	}
+			// }
+			//方法3
+			while(list($key,$value) = each($list)){ 
+				if($id == $value["pid"]){
+						$arr[] = $value;
+					}
 			} 
 	echo json_encode($arr);
 ?>
