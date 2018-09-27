@@ -38,15 +38,17 @@
   })
   app.controller("ctrl",function($scope,$routeParams){
     console.log($routeParams);
-    //获取参数值
+    //获取参数值,绑定数据
     //使用$routeParams:路由配置中:后面的属性名
     $scope.job = $routeParams.job;
     $scope.name = $routeParams.name;
     $scope.id = $routeParams.id;
-    if($scope.job=="学生"){
-      $scope.type="学号是"
-    }else if($scope.job=="教师"){
-      $scope.type="工号是"
+    if($scope.job=="student"){
+      $scope.type="学号";
+      $scope.job = "学生";
+    }else if($scope.job=="teacher"){
+      $scope.type="工号";
+      $scope.job = "老师";
     }
   })
   //配置路由
