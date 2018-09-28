@@ -18,16 +18,24 @@
 <script>
   var app = angular.module('app', []);
   app.controller("ctrl",function($scope,$timeout,$interval){
-     $scope.arr = [];
+     var arr = [];
      var id,a=0;
      $scope.click = function(){
       id = $interval(function(){       
         $scope.show = Math.round(Math.random()*100);
-        $scope.arr.push($scope.show);
+        arr.push($scope.show);
+        arr.sort();
+       for(var i=0;i<arr.length;i++){
+       if(arr[i]===arr[i+1]){
+        arr.splice(i,1);
+        i--;
+        a--;        
+      }           
+    } 
         if(a>=4){
           $interval.cancel(id);
           $scope.info = "抽奖结束,幸运数字为:"
-          $scope.msg = $scope.arr;
+          $scope.msg = arr;
         }   
         a++;
       },1000);     

@@ -40,6 +40,11 @@
   app.controller("ctrl",function($scope,$http){
     //第三题
     $scope.chg = function(index){
+      if(index=="男"){
+        index = "M";
+      }else if(index=="女"){
+         index = "F";
+      }
     $scope.send = function(){
        $http({
          url:"./stu.php",
