@@ -1,7 +1,8 @@
 var http = require('http');
 var fs = require('fs');
-var querystring = require("querystring");
+var qs = require("querystring");
 var server = http.createServer(function (req, res) {
+  res.writeHead(200,{"Content-Type":"text/html;charset=utf-8"});
   if (req.url == '/favicon.ico') {
     return;
   }
@@ -33,8 +34,10 @@ var server = http.createServer(function (req, res) {
     //end:表示接收完成的状态,当数据全部接收完毕,进入该状态
     req.addListener("end",function(){
        //进入接收完成状态,说明数据已经接收完毕
-       console.log(allData);
-       res.end(); //返回响应
+       var uname = qs.parse(allData).username;
+       var upass = qs.parse(allData).password;
+       console.log(qs.parse(allData));
+       res.end("姓名为:"+uname+",密码是:"+upass); //返回响应
     })
   }
 });
