@@ -63,6 +63,6 @@
     1. 使用querystring模块转换字符串为对象
     2. 重做第一个案例project
     3. 分别暴露js中的属性与方法,在另一个js中调用
-    4. 定义一个类,在另一个js中创建该的对象
+    4. 定义一个类,在另一个js中创建该类的对象
     5. 重做最后的silly-datetime与post请求案例
     6. 预习使用formidable模块处理post请求

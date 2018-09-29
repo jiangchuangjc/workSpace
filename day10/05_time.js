@@ -8,3 +8,4 @@ var now = new Date();
 //格式化时间
 var str = sd.format(now,'YYYY-MM-DD HH:mm:ss');
 console.log(str);
+
