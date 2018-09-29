@@ -1,14 +1,11 @@
 var fs = require('fs');
 var arr1 =[];
 var arr2 =[];
-var x=0;
-var y=1;
 fs.readdir("./a",function(err,files){
   if(err){
     console.log(err);
   }else{
     // console.log(files); //数组
-    // console.log(files[0]);
     //异步导致出问题  
     (function a(i){
       if(i==files.length){
@@ -29,7 +26,7 @@ fs.readdir("./a",function(err,files){
         }else{
           if(stats.isFile()){
             // console.log(files[i]+"是文件");
-            arr1.push(files[i])
+            arr1.push(files[i]);
           }else if(stats.isDirectory()){
             // console.log(files[i]+"是文件夹");
             arr2.push(files[i])

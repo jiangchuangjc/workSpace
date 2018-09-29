@@ -16,9 +16,10 @@ var server = http.createServer(function(req,res){
     });
     var urlStr = req.url;
     var urlObj = url.parse(urlStr,true);
-      if(urlObj.query.username!=null && urlObj.query.password != null){
         console.log("用户名为:"+urlObj.query.username);
         console.log("用户密码是:"+urlObj.query.password);
+      if(urlObj.query.username && urlObj.query.password){
+        
        res.end("发送数据成功");
     }
 });
