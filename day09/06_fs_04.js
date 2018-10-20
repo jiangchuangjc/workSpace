@@ -1,6 +1,6 @@
 var fs = require("fs");
 
-fs.writeFile("./1.txt","aaa",function(err){
+fs.writeFile("./1.txt","aaabbbccc",function(err){
   if(err){
     console.log(err);
   }else{

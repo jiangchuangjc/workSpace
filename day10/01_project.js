@@ -21,6 +21,7 @@ var server = http.createServer(function (req, res) {
   if(pathname == "/"){
     pathname = "/index.html";
   }
+  
   //根据pathname来读取project文件夹下的内容
   fs.readFile("./project"+pathname,function(err,data){
     if(err){
@@ -29,5 +30,6 @@ var server = http.createServer(function (req, res) {
     }
     res.end(data);
   })
+  // console.log(pathname);
 });
 server.listen(4000, 'localhost');

@@ -59,7 +59,10 @@
 <body ng-app='app'>
 	<div class="tabs" ng-controller="ctrl">
 		<nav>
-	<a href="javascript:;" ng-click="myClick('local')" ng-class="{active:type == 'local'}">国内新闻</a>	<a href="javascript:;" ng-click="myClick('global')" ng-class="{active:type == 'global'}">国际新闻</a>	<a href="javascript:;" ng-click="myClick('sports')" ng-class="{active:type == 'sports'}">体育新闻</a>	<a href="javascript:;" ng-click="myClick('funny')" ng-class="{active:type == 'funny'}">娱乐新闻</a>
+	<a href="javascript:;" ng-click="myClick('local')" ng-class="{active:type == 'local'}">国内新闻</a>	
+	<a href="javascript:;" ng-click="myClick('global')" ng-class="{active:type == 'global'}">国际新闻</a>	
+	<a href="javascript:;" ng-click="myClick('sports')" ng-class="{active:type == 'sports'}">体育新闻</a>	
+	<a href="javascript:;" ng-click="myClick('funny')" ng-class="{active:type == 'funny'}">娱乐新闻</a>
 		</nav>
 		<div ng-switch="type">
 			<section class="cont" ng-switch-when="local">

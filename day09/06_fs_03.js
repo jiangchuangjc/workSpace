@@ -2,7 +2,7 @@ var fs = require('fs');
 
 //创建目录
 
-fs.mkdir('./a',function(err){
+fs.mkdir('./b',function(err){
   if(err){
     console.log("创建失败,失败运行:");
     console.log(err);
