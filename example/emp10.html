@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+ <title></title>
+
+ <script type="text/javascript">
+
+  var i = 1;
+
+  var focusid;
+
+  function defau() {
+
+   document.getElementById('1').focus();
+
+   focusid=1;
+
+  }
+
+  function showtable() {
+
+   var id = i + 1;
+
+   document.getElementById(id).focus();
+
+   focusid=id;
+
+   i++;
+
+   if (i == 4) {
+
+    i = 0;
+
+   }
+
+  }
+
+  function openhref() {
+
+   var href = document.getElementById(focusid).href;
+
+   document.location = href;
+
+  }
+
+ </script>
+
+</head>
+
+<body onload="defau()">
+
+<a href="http://www.baidu.com/" id="1">百度</a>
+
+<a href="http://www.google.com.hk/" id="2">谷歌</a>
+
+<a href="http://www.youku.com/" id="3">优酷</a>
+
+<a href="http://www.tudou.com/" id="4">土豆</a>
+
+ <input id="Button1" type="button" value="选择" onclick="showtable()" /><br />
+
+ <input id="Button2" type="button" value="进入" onclick="openhref()" />
+
+</body>
+
+</html>
